@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-8 py-3">
-            <a href="/account-create">
+            <a href="{{ route('accounts.create') }}">
                 <button type="button" class="btn btn-primary float-right">Create Account</button>
             </a>
         </div>

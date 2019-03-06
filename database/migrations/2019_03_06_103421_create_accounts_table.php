@@ -18,13 +18,13 @@ class CreateAccountsTable extends Migration
             $table->timestamps();
 
             $table->string('name');
-            $table->string('code');
-            $table->string('tel_1');
-            $table->string('tel_2');
-            $table->mediumText('address');
-            $table->string('image');
+            $table->string('code')->nullable();
+            $table->string('tel')->nullable();
+            $table->string('alt_contact')->nullable();
+            $table->mediumText('address')->nullable();
+            $table->string('image')->nullable();
 
-            $table->decimal('balance', 10, 2);
+            $table->decimal('balance', 10, 2)->default(0);;
         });
     }
 

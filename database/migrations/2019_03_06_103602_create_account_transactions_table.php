@@ -18,13 +18,13 @@ class CreateAccountTransactionsTable extends Migration
             $table->unsignedBigInteger('account_id');
             $table->timestamps();
 
-            $table->string('detail');
+            $table->string('detail')->nullable();
 
-            $table->decimal('debit',   10, 2);
-            $table->decimal('credit',  10, 2);
-            $table->decimal('balance', 10, 2);
+            $table->decimal('debit',   10, 2)->nullable();
+            $table->decimal('credit',  10, 2)->nullable();
+            $table->decimal('balance', 10, 2)->default(0);
 
-            $table->longText('note');
+            $table->longText('note')->nullable();
 
             $table->foreign('account_id')->references('id')->on('accounts');
         });
