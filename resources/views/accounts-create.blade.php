@@ -48,10 +48,10 @@
 
                          <div class="form-group">
                             <label>Image</label>
-                             <input type="file" class="form-control-file" accept="image/*" name="image" capture>
+                             <input type="file" class="form-control-file" accept="image/*" name="file" capture>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary"  id="btn">Create</button>
                     </form>
 
                 </div>
@@ -59,4 +59,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Account;
+use Intervention\Image\ImageManager;
+use Image;
 
 class AccountController extends Controller
 {
@@ -45,7 +47,22 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        Account::create($request->all());
+        if($request->has('file')){
+            
+            $originalPath = storage_path().'/images/';     
+            $time = time();      
+            
+            $originalImage = $request->file('file'); 
+            $fileName = $originalPath.$time.$originalImage->getClientOriginalName();
+        
+
+            $thumbnailImage = Image::make($originalImage)->resize(640,640)->save($fileName);
+                         
+            $request->merge(['image' => $time.$originalImage->getClientOriginalName()]);
+        }
+
+       
+        Account::create($request->except(['file']));
         return redirect('/accounts');
     }
 
